@@ -28,7 +28,7 @@ namespace Librarie
 		{
 			Nume = string.Empty;
 			Prenume = string.Empty;
-
+			NrDeTelefon = 0;
 		}
 		//Constructor cu parametrii
 		public Persoana(string _nume, string _prenume)
@@ -51,6 +51,8 @@ namespace Librarie
 			IdPersoana = Convert.ToInt32(dateFisier[(int)CampuriPersoana.ID]);
 			Nume = dateFisier[(int)CampuriPersoana.NUME];
 			Prenume = dateFisier[(int)CampuriPersoana.PRENUME];
+			Email = dateFisier[(int)CampuriPersoana.EMAIL];
+			NrDeTelefon = Int32.Parse(dateFisier[(int)CampuriPersoana.NR_TELEFON]);
 			Grupul = (Grup)Enum.Parse(typeof(Grup), dateFisier[(int)CampuriPersoana.GRUP]);
 			Social = new List<string>();
 			//adauga mai multe elemente in lista de discipline
@@ -79,7 +81,7 @@ namespace Librarie
 		{
 			
 			string s = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}{7}{0}{8}{0}{9}{0}{10}",
-				SEPARATOR_PRINCIPAL_FISIER, IdPersoana.ToString(), (Nume ?? " NECUNOSCUT "), (Prenume ?? " NECUNOSCUT "), Grupul, (Email ?? " NECUNOSCUT "), NrDeTelefon ,SocialeaString, Salvare,DataNastere, DataActualizare);
+				SEPARATOR_PRINCIPAL_FISIER, IdPersoana.ToString(), (Nume ?? " NECUNOSCUT "), (Prenume ?? " NECUNOSCUT "), (Email ?? " NECUNOSCUT "), NrDeTelefon, Grupul, SocialeaString, Salvare, DataNastere, DataActualizare);
 
 			return s;
 		}
@@ -87,7 +89,7 @@ namespace Librarie
 		{
 
 			string sir = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}{7}{0}{8}{0}{9}{0}{10}",
-				SEPARATOR_PRINCIPAL_FISIER, IdPersoana.ToString(), (Nume ?? " NECUNOSCUT "), (Prenume ?? " NECUNOSCUT "), Grupul, (Email ?? " NECUNOSCUT "), NrDeTelefon, SocialeaString, Salvare, DataNastere, DataActualizare);
+				SEPARATOR_PRINCIPAL_FISIER, IdPersoana.ToString(), (Nume ?? " NECUNOSCUT "), (Prenume ?? " NECUNOSCUT "),  (Email ?? " NECUNOSCUT "), NrDeTelefon,Grupul, SocialeaString, Salvare, DataNastere, DataActualizare);
 
 			return sir;
 		}

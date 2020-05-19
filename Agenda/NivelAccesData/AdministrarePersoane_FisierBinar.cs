@@ -14,11 +14,15 @@ namespace NivelAccesDate
         private const int ID_PRIMA_PERSOANA = 1;
         private const int INCREMENT = 1;
         string NumeFisier { get; set; }
-        public AdministrarePersoane_FisierBinar(string numeFisiser)
+        public AdministrarePersoane_FisierBinar(string numeFisier)
         {
-            this.NumeFisier = NumeFisier;
+            this.NumeFisier = numeFisier;
             Stream sBinFile = File.Open(NumeFisier, FileMode.OpenOrCreate);
             sBinFile.Close();
+
+            //liniile de mai sus pot fi inlocuite cu linia de cod urmatoare deoarece
+            //instructiunea 'using' va apela sBinFile.Close();
+            //using (Stream sBinFile = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
         public Persoana[] GetPersoane(out int nrPersoane)
         {
