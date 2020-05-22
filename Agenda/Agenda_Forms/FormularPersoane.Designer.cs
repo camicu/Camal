@@ -60,6 +60,7 @@
             this.lblNrTelefon = new System.Windows.Forms.Label();
             this.txtNrTelefon = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.Label();
+            this.lblMesaj = new System.Windows.Forms.Label();
             this.gpbGrup.SuspendLayout();
             this.gpbSocial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPersoane)).BeginInit();
@@ -73,6 +74,7 @@
             this.lblNume.Size = new System.Drawing.Size(35, 13);
             this.lblNume.TabIndex = 0;
             this.lblNume.Text = "Nume";
+            this.lblNume.Click += new System.EventHandler(this.lblNume_Click);
             // 
             // lblPrenume
             // 
@@ -307,6 +309,7 @@
             this.btnCauta.TabIndex = 14;
             this.btnCauta.Text = "Cauta";
             this.btnCauta.UseVisualStyleBackColor = true;
+            this.btnCauta.Click += new System.EventHandler(this.btnCauta_Click);
             // 
             // btnModifica
             // 
@@ -317,6 +320,7 @@
             this.btnModifica.TabIndex = 15;
             this.btnModifica.Text = "Modifica";
             this.btnModifica.UseVisualStyleBackColor = true;
+            this.btnModifica.Click += new System.EventHandler(this.btnModifica_Click);
             // 
             // dataGridPersoane
             // 
@@ -379,11 +383,20 @@
             this.lblID.Text = "Id";
             this.lblID.Visible = false;
             // 
+            // lblMesaj
+            // 
+            this.lblMesaj.AutoSize = true;
+            this.lblMesaj.Location = new System.Drawing.Point(477, 27);
+            this.lblMesaj.Name = "lblMesaj";
+            this.lblMesaj.Size = new System.Drawing.Size(0, 13);
+            this.lblMesaj.TabIndex = 39;
+            // 
             // FormularPersoane
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1182, 450);
+            this.Controls.Add(this.lblMesaj);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.txtNrTelefon);
             this.Controls.Add(this.lblNrTelefon);
@@ -453,6 +466,7 @@
         private System.Windows.Forms.Label lblNrTelefon;
         private System.Windows.Forms.TextBox txtNrTelefon;
         private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Label lblMesaj;
     }
 }
 

@@ -23,7 +23,9 @@ namespace Librarie
         NR_TELEFON=4,
         GRUP = 5,
         SOCIAL = 6,
-        SALVARE=7
+        SALVARE=7,
+        DATA_NASTERE=8,
+        DATA_ACTUALIZARE=9
     };
 
 }

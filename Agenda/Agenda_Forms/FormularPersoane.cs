@@ -18,7 +18,7 @@ namespace Agenda_Forms
         public FormularPersoane()
         {
             InitializeComponent();
-            adminPersoane = StocareFactory.GetAdministratorStocare();
+           
             this.Width = 500;
         }
 
@@ -34,20 +34,18 @@ namespace Agenda_Forms
             }
             else
             {
-                Persoana s = new Persoana(txtNume.Text, txtPrenume.Text)
-                {
-                    Email = txtEmail.Text,
-                    NrDeTelefon = Int32.Parse(txtNrTelefon.Text),
-                    Grupul = GetGrupSelectat(),
-                    Social = new List<string>()
-                };
+                Persoana s = new Persoana(txtNume.Text, txtPrenume.Text);
+                s.Email = txtEmail.Text;
+                s. NrDeTelefon = Int32.Parse(txtNrTelefon.Text);
+                s.Grupul = GetGrupSelectat();
+                s.Social = new List<string>();
+           
                 s.Social.AddRange(socialeSelectate);
                 s.DataActualizare = DateTime.Now;
                 s.DataNastere = dtpDataNastere.Value;
                 adminPersoane.AddPersoana(s);
-                //lblMesaj.Text = "Studentul a fost adaugat";
+                lblMesaj.Text = "Persoana a fost adaugata";
 
-                //resetarea controalelor pentru a introduce datele unui student nou
                 ResetareControale();
             }
         }
@@ -64,7 +62,7 @@ namespace Agenda_Forms
             ckbReddit.Checked = false;
             ckbWhatsApp.Checked = false;
             socialeSelectate.Clear();
-           // lblMesaj.Text = string.Empty;
+            lblMesaj.Text = string.Empty;
             lblID.Text = String.Empty;
         }
         private CodEroare Validare(string nume, string prenume, string email, string nrtelefon)
@@ -86,7 +84,6 @@ namespace Agenda_Forms
             {
                 rezultatValidare |= CodEroare.NRTELEFON_INCORECT;
             }
-            // verificare ca este cel putin un program studiu selectat
             int grupSelectat = 0;
             foreach (var control in gpbGrup.Controls)
             {
@@ -161,7 +158,7 @@ namespace Agenda_Forms
             }
             catch (Exception ex)
             {
-                //lblMesaj.Text = "Eroare: " + ex.Message;
+                lblMesaj.Text = "Eroare: " + ex.Message;
             }
 
             if (s != null)
@@ -197,7 +194,7 @@ namespace Agenda_Forms
                 cmbSalvare.Text = s.Salvare;
             }
         }
-
+     
         private void btnAfiseaza_Click(object sender, EventArgs e)
         {
             this.Width = 1330;
@@ -234,6 +231,84 @@ namespace Agenda_Forms
                 socialeSelectate.Add(socialSelectat);
             else
                 socialeSelectate.Remove(socialSelectat);
+        }
+
+        private void btnCauta_Click(object sender, EventArgs e)
+        {
+            Persoana s = adminPersoane.GetPersoana(txtNume.Text, txtPrenume.Text);
+            if (s != null)
+            {
+                lblMesaj.Text = s.ConversieLaSir();
+                foreach (var social in gpbSocial.Controls)
+                {
+                    if (social is CheckBox)
+                    {
+                        var socialBox = social as CheckBox;
+                        foreach (String dis in s.Social)
+                            if (socialBox.Text.Equals(dis))
+                                socialBox.Checked = true;
+                    }
+                }
+            }
+            else
+                lblMesaj.Text = "Nu s-a gasit persoana";
+            if (txtNume.Enabled == true && txtPrenume.Enabled == true)
+            {
+                txtNume.Enabled = false;
+                txtPrenume.Enabled = false;
+                foreach (var button in gpbGrup.Controls)
+                {
+                    if (button is RadioButton)
+                    {
+                        var radioButton = button as RadioButton;
+                        radioButton.Enabled = false;
+                    }
+                }
+            }
+            else
+            {
+                txtNume.Enabled = true;
+                txtPrenume.Enabled = true;
+                foreach (var button in gpbGrup.Controls)
+                {
+                    if (button is RadioButton)
+                    {
+                        var radioButton = button as RadioButton;
+                        radioButton.Enabled = true;
+                    }
+                }
+            }
+        }
+
+        private void btnModifica_Click(object sender, EventArgs e)
+        {
+            ResetCuloareEtichete();
+
+            CodEroare codValidare = Validare(txtNume.Text, txtPrenume.Text, txtEmail.Text,txtNrTelefon.Text);
+
+            if (codValidare != CodEroare.CORECT)
+            {
+                MarcheazaControaleCuDateIncorecte(codValidare);
+            }
+            else
+            {
+                Persoana s = new Persoana(txtNume.Text, txtPrenume.Text);
+                s.IdPersoana = Int32.Parse(lblID.Text);
+                s.Grupul = GetGrupSelectat();
+                s.Social = new List<string>();
+
+                s.Social.AddRange(socialeSelectate);
+                s.DataActualizare = DateTime.Now;
+                s.DataNastere = dtpDataNastere.Value;
+                adminPersoane.UpdatePersoana(s);       
+                lblMesaj.Text = "Persoana a fost actualizata";
+                ResetareControale();
+            }
+        }
+
+        private void lblNume_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

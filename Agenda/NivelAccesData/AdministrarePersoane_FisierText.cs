@@ -1,4 +1,4 @@
-﻿using Librarie;
+﻿ using Librarie;
 using System;
 using System.Collections;
 using System.IO;
@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace NivelAccesDate
 {
-    //clasa AdministrareStudenti_FisierText implementeaza interfata IStocareData
     public class AdministrarePersoane_FisierText : IStocareData
     {
         private const int ID_PRIMA_PERSOANA = 1;
@@ -19,10 +18,6 @@ namespace NivelAccesDate
             this.NumeFisier = numeFisier;
             Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate);
             sFisierText.Close();
-
-            //liniile de mai sus pot fi inlocuite cu linia de cod urmatoare deoarece
-            //instructiunea 'using' va apela sFisierText.Close();
-            //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
         public Persoana[] GetPersoane(out int nrPersoane)
         {
@@ -30,13 +25,10 @@ namespace NivelAccesDate
 
             try
             {
-                // instructiunea 'using' va apela sr.Close()
                 using (StreamReader sr = new StreamReader(NumeFisier))
                 {
                     string line;
                     nrPersoane = 0;
-
-                    //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
                     while ((line = sr.ReadLine()) != null)
                     {
                         persoane[nrPersoane++] = new Persoana(line);
@@ -63,8 +55,6 @@ namespace NivelAccesDate
             s.IdPersoana = GetId();
             try
             {
-                //instructiunea 'using' va apela la final swFisierText.Close();
-                //al doilea parametru setat la 'true' al constructorului StreamWriter indica modul 'append' de deschidere al fisierului
                 using (StreamWriter swFisierText = new StreamWriter(NumeFisier, true))
                 {
 
@@ -87,8 +77,6 @@ namespace NivelAccesDate
             persoana.IdPersoana = GetId();
             try
             {
-                //instructiunea 'using' va apela la final swFisierText.Close();
-                //al doilea parametru setat la 'true' al constructorului StreamWriter indica modul 'append' de deschidere al fisierului
                 using (StreamWriter swFisierText = new StreamWriter(NumeFisier, true))
                 {
 
@@ -110,12 +98,9 @@ namespace NivelAccesDate
 
             try
             {
-                // instructiunea 'using' va apela sr.Close()
                 using (StreamReader sr = new StreamReader(NumeFisier))
                 {
                     string line;
-
-                    //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
                     while ((line = sr.ReadLine()) != null)
                     {
                         Persoana s = new Persoana(line);
@@ -139,12 +124,9 @@ namespace NivelAccesDate
         {
             try
             {
-                // instructiunea 'using' va apela sr.Close()
                 using (StreamReader sr = new StreamReader(NumeFisier))
                 {
                     string line;
-
-                    //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
                     while ((line = sr.ReadLine()) != null)
                     {
                         Persoana persoana = new Persoana(line);
@@ -168,18 +150,15 @@ namespace NivelAccesDate
         {
             try
             {
-                // instructiunea 'using' va apela sr.Close()
                 using (StreamReader sr = new StreamReader(NumeFisier))
                 {
                     string line;
-                    int contor = 0;
-                    //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
                     while ((line = sr.ReadLine()) != null)
                     {
                         Persoana persoana = new Persoana(line);
-                        if (contor == index)
+                        if (persoana.IdPersoana == index)
                             return persoana;
-                        contor++;
+
                     }
                 }
             }
@@ -199,14 +178,11 @@ namespace NivelAccesDate
             List<Persoana> persoane = GetPersoane();
             bool actualizareCuSucces = false;
             try
-            {
-                //instructiunea 'using' va apela la final swFisierText.Close();
-                //al doilea parametru setat la 'false' al constructorului StreamWriter indica modul 'overwrite' de deschidere al fisierului
+            {       
                 using (StreamWriter swFisierText = new StreamWriter(NumeFisier, false))
                 {
                     foreach (Persoana pers in persoane)
                     {
-                        //informatiile despre studentul actualizat vor fi preluate din parametrul "studentActualizat"
                         if (pers.IdPersoana != persoanaActualizata.IdPersoana)
                         {
                             swFisierText.WriteLine(pers.ConversieLaSir_PentruFisier());
@@ -236,12 +212,9 @@ namespace NivelAccesDate
             int IdPersoana = ID_PRIMA_PERSOANA;
             try
             {
-                // instructiunea 'using' va apela sr.Close()
                 using (StreamReader sr = new StreamReader(NumeFisier))
                 {
-                    string line;
-
-                    //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
+                    string line;                  
                     while ((line = sr.ReadLine()) != null)
                     {
                         Persoana s = new Persoana(line);

@@ -22,7 +22,7 @@ namespace Librarie
 		public DateTime DataActualizare { get; set; }
 		public Grup Grupul { get; set; }
 		public string Salvare { get; set; }
-
+		public static int ModificareId { get; set; }
 		//Constructor fara parametrii
 		public Persoana()
 		{
@@ -58,6 +58,8 @@ namespace Librarie
 			//adauga mai multe elemente in lista de discipline
 			Social.AddRange(dateFisier[(int)CampuriPersoana.SOCIAL].Split(SEPARATOR_SECUNDAR_FISIER));
 			Salvare =dateFisier[(int)CampuriPersoana.SALVARE];
+			DataNastere = Convert.ToDateTime(dateFisier[(int)CampuriPersoana.DATA_NASTERE]);
+			DataActualizare = Convert.ToDateTime(dateFisier[(int)CampuriPersoana.DATA_ACTUALIZARE]);
 		}
 		public string SocialeaString
 		{
