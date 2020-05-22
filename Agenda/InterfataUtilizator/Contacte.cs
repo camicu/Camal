@@ -74,7 +74,7 @@ namespace InterfataUtilizator
         {
 
             dataGridPersoane.DataSource = null;
-            dataGridPersoane.DataSource = persoane.Select(s => new { s.IdPersoana, s.Nume, s.Prenume, s.NrDeTelefon, s.Email, s.Grupul, Social = string.Join(",", s.Social), s.DataNastere, s.DataActualizare }).ToList();
+            dataGridPersoane.DataSource = persoane.Select(s => new { s.IdPersoana, s.Nume, s.Prenume, s.NrDeTelefon, s.Email, s.Grupul, Social = string.Join(",", s.Social),s.Salvare, s.DataNastere.Date, s.DataActualizare }).ToList();
         }
 
         private void lblAdauga_Click(object sender, EventArgs e)
@@ -95,9 +95,8 @@ namespace InterfataUtilizator
             //activeForm.Hide();
             
         }
-        private void CautaPersoaneInControlDataGridView()
+        private void CautaPersoaneInControlDataGridView(string cautare)
         {
-            string cautare = txtCauta.Text.ToUpper();
             dataGridPersoane.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             try
             {
@@ -115,7 +114,6 @@ namespace InterfataUtilizator
                             break;
                         }
                     }
-
                 }
                 if (!result)
                 {
@@ -138,7 +136,19 @@ namespace InterfataUtilizator
 
         private void btnCauta_Click(object sender, EventArgs e)
         {          
-            CautaPersoaneInControlDataGridView();
+            CautaPersoaneInControlDataGridView( txtCauta.Text.ToUpper());
+        }
+
+        private void btnCautaData_Click(object sender, EventArgs e)
+        {     
+            string data = dtpData1.Value.Date.ToString();
+            CautaPersoaneInControlDataGridView(data);
+        }
+
+        private void btnNumeComplet_Click(object sender, EventArgs e)
+        {
+            Persoana s = adminPersoane.GetPersoanaByIndex(Persoana.ModificareId);
+            txtNumeComplet.Text = s.NumeComplet();
         }
     }
 }

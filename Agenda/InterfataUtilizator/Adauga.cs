@@ -41,18 +41,17 @@ namespace InterfataUtilizator
                 s.Grupul = GetGrupSelectat();
                 s.Social = new List<string>();
                 s.Social.AddRange(socialeSelectate);
+                s.Salvare = cmbSalvare.Text;
                 s.DataActualizare = DateTime.Now;
                 s.DataNastere = dtpDataNastere.Value;
+
                 adminPersoane.AddPersoana(s);
-              //  lblMesaj.Text = "Persoana a fost adaugata";
                 ResetareControale();
-                Contacte fc = new Contacte();
-                fc.ShowDialog();
-                this.Close();
+                MessageBox.Show("Contactul a fost Adaugat");
             }
 
-            
-        }
+
+            }
         private void ckbSociale_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBoxControl = sender as CheckBox;
@@ -108,8 +107,6 @@ namespace InterfataUtilizator
             ckbReddit.Checked = false;
             ckbWhatsApp.Checked = false;
             socialeSelectate.Clear();
-           // lblMesaj.Text = string.Empty;
-           // lblID.Text = String.Empty;
         }
         private Grup GetGrupSelectat()
         {
@@ -119,7 +116,6 @@ namespace InterfataUtilizator
                 return Grup.Familie;
             if (rdbPrieteni.Checked)
                 return Grup.Prieteni;
-
             return Grup.Necunoscut;
         }
         private CodEroare Validare(string nume, string prenume, string email, string nrtelefon)

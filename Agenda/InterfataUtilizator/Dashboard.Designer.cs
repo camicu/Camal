@@ -149,6 +149,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(152, 504);
             this.panel2.Name = "panel2";
@@ -157,9 +158,10 @@
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(236, 139);
+            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
+            this.panel4.Location = new System.Drawing.Point(186, 38);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(821, 308);
+            this.panel4.Size = new System.Drawing.Size(940, 430);
             this.panel4.TabIndex = 2;
             // 
             // panelLeft

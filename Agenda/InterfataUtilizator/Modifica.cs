@@ -197,15 +197,13 @@ namespace InterfataUtilizator
                 s.Grupul = GetGrupSelectat();
                 s.Social = new List<string>();
                 s.Social.AddRange(socialeSelectate);
+                s.Salvare = cmbSalvare.Text;
                 s.DataActualizare = DateTime.Now;
                 s.DataNastere = dtpDataNastere.Value;
                 adminPersoane.UpdatePersoana(s);
-                //  lblMesaj.Text = "Persoana a fost adaugata";
                 ResetareControale();
-                this.Hide();
-                Contacte fc = new Contacte();
-                fc.ShowDialog();
-                this.Close();
+                MessageBox.Show("Contactul a fost Modifica");
+               
             }
 
         }

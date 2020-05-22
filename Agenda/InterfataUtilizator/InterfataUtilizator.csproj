@@ -71,12 +71,6 @@
     <Compile Include="Adauga.Designer.cs">
       <DependentUpon>Adauga.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cautare.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cautare.Designer.cs">
-      <DependentUpon>Cautare.cs</DependentUpon>
-    </Compile>
     <Compile Include="Contacte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,9 +95,6 @@
     <Compile Include="StocareFactory.cs" />
     <EmbeddedResource Include="Adauga.resx">
       <DependentUpon>Adauga.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cautare.resx">
-      <DependentUpon>Cautare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contacte.resx">
       <DependentUpon>Contacte.cs</DependentUpon>

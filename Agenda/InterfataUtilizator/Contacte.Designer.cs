@@ -42,6 +42,10 @@
             this.btnCauta = new System.Windows.Forms.Button();
             this.lstAfisare = new System.Windows.Forms.ListBox();
             this.txtCauta = new System.Windows.Forms.TextBox();
+            this.dtpData1 = new System.Windows.Forms.DateTimePicker();
+            this.btnCautaData = new System.Windows.Forms.Button();
+            this.txtNumeComplet = new System.Windows.Forms.TextBox();
+            this.btnNumeComplet = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPersoane)).BeginInit();
             this.SuspendLayout();
@@ -225,11 +229,57 @@
             this.txtCauta.Size = new System.Drawing.Size(268, 23);
             this.txtCauta.TabIndex = 35;
             // 
+            // dtpData1
+            // 
+            this.dtpData1.Location = new System.Drawing.Point(247, 23);
+            this.dtpData1.Name = "dtpData1";
+            this.dtpData1.Size = new System.Drawing.Size(200, 23);
+            this.dtpData1.TabIndex = 36;
+            // 
+            // btnCautaData
+            // 
+            this.btnCautaData.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnCautaData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCautaData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.btnCautaData.Image = ((System.Drawing.Image)(resources.GetObject("btnCautaData.Image")));
+            this.btnCautaData.Location = new System.Drawing.Point(452, 18);
+            this.btnCautaData.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCautaData.Name = "btnCautaData";
+            this.btnCautaData.Size = new System.Drawing.Size(41, 36);
+            this.btnCautaData.TabIndex = 37;
+            this.btnCautaData.UseVisualStyleBackColor = true;
+            this.btnCautaData.Click += new System.EventHandler(this.btnCautaData_Click);
+            // 
+            // txtNumeComplet
+            // 
+            this.txtNumeComplet.Location = new System.Drawing.Point(507, 16);
+            this.txtNumeComplet.Multiline = true;
+            this.txtNumeComplet.Name = "txtNumeComplet";
+            this.txtNumeComplet.Size = new System.Drawing.Size(207, 73);
+            this.txtNumeComplet.TabIndex = 38;
+            // 
+            // btnNumeComplet
+            // 
+            this.btnNumeComplet.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnNumeComplet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.btnNumeComplet.Location = new System.Drawing.Point(743, 18);
+            this.btnNumeComplet.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNumeComplet.Name = "btnNumeComplet";
+            this.btnNumeComplet.Size = new System.Drawing.Size(92, 66);
+            this.btnNumeComplet.TabIndex = 39;
+            this.btnNumeComplet.Text = "Nume Prenume";
+            this.btnNumeComplet.UseVisualStyleBackColor = true;
+            this.btnNumeComplet.Click += new System.EventHandler(this.btnNumeComplet_Click);
+            // 
             // Contacte
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(1155, 694);
+            this.Controls.Add(this.btnNumeComplet);
+            this.Controls.Add(this.txtNumeComplet);
+            this.Controls.Add(this.btnCautaData);
+            this.Controls.Add(this.dtpData1);
             this.Controls.Add(this.txtCauta);
             this.Controls.Add(this.lstAfisare);
             this.Controls.Add(this.lblModifica);
@@ -266,5 +316,9 @@
         private System.Windows.Forms.Button btnCauta;
         private System.Windows.Forms.ListBox lstAfisare;
         private System.Windows.Forms.TextBox txtCauta;
+        private System.Windows.Forms.DateTimePicker dtpData1;
+        private System.Windows.Forms.Button btnCautaData;
+        private System.Windows.Forms.TextBox txtNumeComplet;
+        private System.Windows.Forms.Button btnNumeComplet;
     }
 }

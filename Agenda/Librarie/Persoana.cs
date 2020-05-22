@@ -100,6 +100,12 @@ namespace Librarie
 		{
 			return ConversieLaSir_PentruFisier();
 		}
+		public string NumeComplet()
+		{
+			string numec = string.Format("{0} {1}", Nume, Prenume);
+		
+			return numec;
+		}
 	}
 }
 
